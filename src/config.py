@@ -30,7 +30,7 @@ EXP1_N_VALUES_PAPER = list(range(2, 41))
 EXP1_N_VALUES_RUN = list(range(2, 23))
 
 EXP1_N_REF_PAPER = 80  # reference grid size N_ref for the "exact" V(mu,nu) (exp_1 data_requirements)
-EXP1_N_REF_RUN = 44  # reference grid size actually executed (time-budget reduction)
+EXP1_N_REF_RUN = 44  # reference grid size actually executed (reduced to fit the available time)
 
 # ---------------------------------------------------------------------------
 # Experiment 2: tilted martingale coupling (Example 1.2, Section 2.4, Section 4.1)

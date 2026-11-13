@@ -47,7 +47,7 @@ src/     grids, Wasserstein-1 distance, tilted couplings, the counterexample
          primitives, the discrete MOT linear program, and config.py
 exp/     exp1.py, exp2.py, exp3.py -- one script per experiment
 tests/   pytest unit tests for every src/ component
-data/    empty synthetic-data placeholder (no experiment needs it)
+data/    empty package (no experiment loads external or synthetic data)
 results/ CSV/JSON/PNG outputs of the experiments and RESULTS.md
 ```
 

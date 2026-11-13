@@ -93,21 +93,24 @@ bound on the gap, not its exact value).
 ## Deviations from the paper
 
 * **Experiment 1 grid range reduced.** The paper's methodology for exp_1
-  sweeps N = 2..40 with a reference grid N_ref = 80 (6400x6400 LP variables).
-  Because the discrete MOT linear program's dense sparse-equality-constraint
-  system grows as N^2 variables and N^2 constraints, and `scipy.optimize
-  .linprog(method="highs-ipm")` solve time grows faster than linearly past
-  N~25 on the available 4-CPU/8-GiB machine, the full sweep plus the N_ref=80
-  reference (which alone takes several minutes) was estimated to exceed the
-  time available for this replication together with the other two
-  experiments and the test suite. The executed sweep uses N = 2..22 with
-  N_ref = 44 (`EXP1_N_VALUES_RUN`, `EXP1_N_REF_RUN` in `src/config.py`); the
-  paper's full configuration (`EXP1_N_VALUES_PAPER = 2..40`,
-  `EXP1_N_REF_PAPER = 80`) is implemented and selectable with
-  `python -m exp.exp1 --full`. The sample period, discretization method, cost
-  function, and all formulas are unchanged; only the number of grid points
-  swept is reduced. No data source is involved in this purely numerical
-  experiment.
+  sweeps N = 2..40 with a reference grid N_ref = 80 (6400x6400 atoms,
+  40,960,000 LP variables for the coupling matrix). The discrete MOT linear
+  program has N^4 variables (an N^2 x N^2 coupling matrix) and 2N^2+2N
+  equality constraints, so cost grows steeply with N: a single
+  `scipy.optimize.linprog(method="highs-ipm")` solve was measured directly on
+  this machine at N=22 (8.3 s), N=28 (37.6 s), and N=40 (236.9 s, peak
+  resident memory 3.21 GiB for that one solve). Extrapolating this measured
+  growth, N_ref=80 (16x more variables than N=40) would take on the order of
+  hours and risk exceeding the memory available on a single process, which
+  would exceed the time available for this replication together with the
+  other two experiments and the test suite. The executed sweep uses
+  N = 2..22 with N_ref = 44 (`EXP1_N_VALUES_RUN`, `EXP1_N_REF_RUN` in
+  `src/config.py`); the paper's full configuration
+  (`EXP1_N_VALUES_PAPER = 2..40`, `EXP1_N_REF_PAPER = 80`) is implemented and
+  selectable with `python -m exp.exp1 --full`. The sample period,
+  discretization method, cost function, and all formulas are unchanged; only
+  the number of grid points swept is reduced. No data source is involved in
+  this purely numerical experiment.
 * **Experiment 1 rate exponent not saturated.** The fitted exponent
   `gamma_hat = 2.18` is steeper than the paper's worst-case bound `gamma =
   1/2`; this is expected at these grid resolutions (see the Experiment 1
@@ -139,6 +142,6 @@ bound on the gap, not its exact value).
 
 ## Not reproduced
 
-There is nothing to report: all three selected experiments (Experiments 1-3,
+There is nothing to report: all three experiments (Experiments 1-3,
 covering Theorem 1.4, Example 1.2, and Example 6.1) were executed and
 compared against the paper's stated results above.

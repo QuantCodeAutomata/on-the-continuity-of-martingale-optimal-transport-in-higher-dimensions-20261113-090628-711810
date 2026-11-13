@@ -158,7 +158,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full", action="store_true",
                          help="use the paper's full configuration (N up to 40, N_ref=80) "
-                              "instead of the time-budget-reduced sweep")
+                              "instead of the reduced sweep executed by default")
     args = parser.parse_args()
     if args.full:
         run(config.EXP1_N_VALUES_PAPER, config.EXP1_N_REF_PAPER)

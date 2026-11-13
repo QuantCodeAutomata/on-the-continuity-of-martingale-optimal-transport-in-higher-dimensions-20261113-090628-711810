@@ -102,8 +102,8 @@ def run_unbounded_configuration(return_density: bool = False):
 
     # unbounded_tilted_coupling / verify_martingale_coupling build dense (m, n)
     # matrices (pi, density, ...). With m = n = N_SAMPLES = 20000 those matrices
-    # would be 20000 x 20000 x 8 bytes ~= 3.2 GB *each*, far above the 1.5 GiB
-    # process budget. nu keeps the full N_SAMPLES (needed for a stable Monte
+    # would be 20000 x 20000 x 8 bytes ~= 3.2 GB *each*, far above the
+    # per-process memory limit used here. nu keeps the full N_SAMPLES (needed for a stable Monte
     # Carlo estimate of Sigma_T / lambda_T, an O(N) computation); mu is capped
     # at a smaller count so the (m, n) matrices stay small (O(10-100 MB)) while
     # still being large enough for stable marginal/martingale diagnostics.
