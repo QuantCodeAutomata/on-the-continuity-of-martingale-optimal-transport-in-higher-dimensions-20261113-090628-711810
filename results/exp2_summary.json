@@ -1,0 +1,31 @@
+{
+  "bounded": {
+    "density_min": 0.4237599999999999,
+    "density_max": 1.57624,
+    "theta": 0.6000000000000001,
+    "kappa": 0.3999999999999999,
+    "max_row_marginal_error": 5.421010862427522e-20,
+    "max_col_marginal_error": 6.559423143537302e-18,
+    "max_martingale_error": 1.5680000000094013e-08,
+    "within_tolerance": true
+  },
+  "unbounded": {
+    "lambda_T": 0.9870811013779973,
+    "r_max": 0.08225675844816645,
+    "r_mu": 0.041128379224083224,
+    "density_min": 0.8754480004999246,
+    "density_max": 1.1246506786420203,
+    "kappa_empirical": 0.8754480004999246,
+    "attempts": [
+      {
+        "r_mu": 0.041128379224083224,
+        "density_min": 0.8754480004999246,
+        "density_max": 1.1246506786420203
+      }
+    ],
+    "max_row_marginal_error": 1.0842021724855044e-19,
+    "max_col_marginal_error": 7.725645681124464e-08,
+    "max_martingale_error": 2.792854042675579e-06,
+    "within_tolerance": true
+  }
+}

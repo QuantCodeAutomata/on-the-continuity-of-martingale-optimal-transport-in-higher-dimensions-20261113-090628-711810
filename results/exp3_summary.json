@@ -1,0 +1,8 @@
+{
+  "v_q_analytic": 0.3125,
+  "v_limit_lp": 0.2734265599999998,
+  "explicit_coupling_cost": 0.3106481481481482,
+  "gap_observed": 0.034711222237900796,
+  "gap_theory": 0.001851851851851852,
+  "kappa": 0.0625
+}
